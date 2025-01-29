@@ -1,14 +1,18 @@
 import 'package:buyo_ecommerce_app/features/store/screens/home_page.dart';
+import 'package:buyo_ecommerce_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      themeMode: ThemeMode.system,
+      theme: TAppTheme.lightTheme,
+      darkTheme: TAppTheme.darkTheme,
+      home: const HomePage(),
     );
   }
 }
