@@ -8,9 +8,10 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //We have to use the GetMaterialApp because of the Get utilization in helper functions
     return GetMaterialApp(
-      //We have to use this because of the get utilization in helper functions
       debugShowCheckedModeBanner: false,
+      //Theme mode to automatically change the theme based on the system theme
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
