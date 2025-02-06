@@ -5,7 +5,8 @@ class TTexts {
   static const String skip = "Skip";
   static const String done = "Done";
   static const String submit = "Submit";
-  static const String appName = "Buyo";
+  static const String shortAppName = "Buyo";
+  static const String longAppName = "Buyo Shop";
   static const String tContinue = "Continue";
 
   // -- OnBoarding Texts
@@ -67,6 +68,5 @@ class TTexts {
 
   // -- Home
   static const String homeAppbarTitle = "Good day for shopping";
-  static const String homeAppbarSubTitle =
-      "Emilly Eduarda de Oliveira Marques da Silva Sauro";
+  static const String homeAppbarSubTitle = "Pedro Dias";
 }

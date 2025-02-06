@@ -68,4 +68,7 @@ class TSizes {
 
   // Grid view spacing
   static const double gridViewSpacing = 16.0;
+
+  // Custom Widgets
+  static const double shopAppBarHeight = 200.0;
 }
