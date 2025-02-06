@@ -1,4 +1,5 @@
 import 'package:buyo_ecommerce_app/features/authentication/screens/signup/signup.dart';
+import 'package:buyo_ecommerce_app/navigation_menu.dart';
 import 'package:buyo_ecommerce_app/utils/constants/sizes.dart';
 import 'package:buyo_ecommerce_app/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +69,8 @@ class LoginForm extends StatelessWidget {
           SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () {}, child: const Text(TTexts.signIn))),
+                  onPressed: () => Get.to(() => const NavigationMenu()),
+                  child: const Text(TTexts.signIn))),
 
           const SizedBox(
             height: TSizes.spaceBtwItems,
