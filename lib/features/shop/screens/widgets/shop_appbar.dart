@@ -52,7 +52,8 @@ class ShopAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(TSizes.sm),
+            padding: const EdgeInsets.symmetric(
+                vertical: TSizes.sm, horizontal: TSizes.md),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
