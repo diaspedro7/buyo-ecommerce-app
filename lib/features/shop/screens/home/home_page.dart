@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:buyo_ecommerce_app/features/shop/screens/widgets/products_gridview.dart';
-import 'package:buyo_ecommerce_app/features/shop/screens/widgets/shop_appbar.dart';
+import 'package:buyo_ecommerce_app/common/widgets_products/products_gridview.dart';
+import 'package:buyo_ecommerce_app/features/shop/screens/home/widgets/shop_appbar.dart';
 
 import 'package:buyo_ecommerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';

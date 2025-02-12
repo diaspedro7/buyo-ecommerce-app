@@ -1,8 +1,12 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_local_variable
 
+import 'package:buyo_ecommerce_app/features/shop/controllers/search/search_products_controller.dart';
+import 'package:buyo_ecommerce_app/features/shop/screens/search/search_products_page.dart';
+import 'package:buyo_ecommerce_app/common/widgets_products/search_products_textfield.dart';
 import 'package:buyo_ecommerce_app/utils/constants/colors.dart';
 import 'package:buyo_ecommerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ShopAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -12,6 +16,8 @@ class ShopAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SearchProductsController());
+
     return AppBar(
       backgroundColor: TColors.primary,
       toolbarHeight: TSizes.shopAppBarHeight,
@@ -61,33 +67,10 @@ class ShopAppBar extends StatelessWidget implements PreferredSizeWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      child: SizedBox(
-                        height: 40,
-                        child: TextFormField(
-                          cursorColor: TColors.primary,
-                          decoration: InputDecoration(
-                              prefixIcon: const Icon(
-                                Icons.search,
-                                color: TColors.textSecondary,
-                              ),
-                              hintText: "Search",
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical:
-                                      0), // Needs this to centralize the hintText
-
-                              hintStyle: Theme.of(context)
-                                  .inputDecorationTheme
-                                  .hintStyle!
-                                  .apply(color: TColors.textSecondary),
-                              fillColor: TColors.white,
-                              filled: true,
-                              focusedBorder: Theme.of(context)
-                                  .inputDecorationTheme
-                                  .focusedBorder!
-                                  .copyWith(
-                                      borderSide: const BorderSide(
-                                          color: TColors.grey, width: 1))),
-                        ),
+                      child: SearchTextField(
+                        onFieldSubmitted: (value) {
+                          Get.to(() => SearchProductsPage());
+                        },
                       ),
                     ),
                     // Text(TTexts.longAppName,
@@ -103,30 +86,6 @@ class ShopAppBar extends StatelessWidget implements PreferredSizeWidget {
                         ))
                   ],
                 ),
-                const SizedBox(
-                  height: TSizes.spaceBtwSections,
-                ),
-                // TextFormField(
-                //   cursorColor: TColors.primary,
-                //   decoration: InputDecoration(
-                //       prefixIcon: const Icon(
-                //         Icons.search,
-                //         color: TColors.textSecondary,
-                //       ),
-                //       hintText: "Search",
-                //       hintStyle: Theme.of(context)
-                //           .inputDecorationTheme
-                //           .hintStyle!
-                //           .apply(color: TColors.textSecondary),
-                //       fillColor: TColors.white,
-                //       filled: true,
-                //       focusedBorder: Theme.of(context)
-                //           .inputDecorationTheme
-                //           .focusedBorder!
-                //           .copyWith(
-                //               borderSide: const BorderSide(
-                //                   color: TColors.grey, width: 1))),
-                // )
               ],
             ),
           ),

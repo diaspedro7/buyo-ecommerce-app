@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:buyo_ecommerce_app/features/shop/screens/home_page.dart';
+import 'package:buyo_ecommerce_app/features/shop/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
