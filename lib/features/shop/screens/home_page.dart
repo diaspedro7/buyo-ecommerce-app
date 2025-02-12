@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-import 'package:buyo_ecommerce_app/features/shop/screens/widgets/product_card.dart';
+
+import 'package:buyo_ecommerce_app/features/shop/screens/widgets/products_gridview.dart';
 import 'package:buyo_ecommerce_app/features/shop/screens/widgets/shop_appbar.dart';
 
 import 'package:buyo_ecommerce_app/utils/constants/sizes.dart';
@@ -17,13 +18,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: ShopAppBar(),
+        appBar: const ShopAppBar(),
         body: Padding(
           padding: const EdgeInsets.all(TSizes.lg),
           child: SingleChildScrollView(
-            child: Column(children: [
-              ProductCard(),
-            ]),
+            child: Column(children: [GridViewProducts()]),
           ),
         ));
   }
