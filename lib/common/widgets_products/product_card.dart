@@ -1,13 +1,16 @@
+import 'package:buyo_ecommerce_app/features/shop/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:buyo_ecommerce_app/utils/constants/colors.dart';
-import 'package:buyo_ecommerce_app/utils/constants/image_strings.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:buyo_ecommerce_app/utils/constants/sizes.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
     super.key,
+    required this.product,
   });
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +36,10 @@ class ProductCard extends StatelessWidget {
               ),
               child: Stack(
                 children: [
-                  const Align(
+                  Align(
                     alignment: Alignment.center,
                     child: Image(
-                      image: AssetImage(TImages.productImage52),
+                      image: AssetImage(product.image),
                       fit: BoxFit.contain,
                       height: 150,
                     ),
@@ -50,22 +53,24 @@ class ProductCard extends StatelessWidget {
                           color: TColors.error,
                         ),
                       )),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      padding: const EdgeInsets.all(TSizes.xs),
-                      decoration: BoxDecoration(
-                          color: TColors.secondary,
-                          borderRadius: BorderRadius.circular(TSizes.sm)),
-                      child: Text(
-                        "46%",
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge!
-                            .apply(color: TColors.black),
-                      ),
-                    ),
-                  )
+                  product.discount == 0
+                      ? const SizedBox()
+                      : Align(
+                          alignment: Alignment.topLeft,
+                          child: Container(
+                            padding: const EdgeInsets.all(TSizes.xs),
+                            decoration: BoxDecoration(
+                                color: TColors.secondary,
+                                borderRadius: BorderRadius.circular(TSizes.sm)),
+                            child: Text(
+                              "${product.discount}%",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge!
+                                  .apply(color: TColors.black),
+                            ),
+                          ),
+                        )
                 ],
               ),
             ),
@@ -77,7 +82,8 @@ class ProductCard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      "iPhone 16 Pro Max Apple (256GB) Titânio Natural, Tela de 6,9, 5G e Câmera de 48MP",
+                      //"iPhone 16 Pro Max Apple (256GB) Titânio Natural, Tela de 6,9, 5G e Câmera de 48MP",
+                      product.title,
                       style: Theme.of(context).textTheme.labelLarge,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
@@ -86,7 +92,8 @@ class ProductCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 5.0),
                   Text(
-                    "\$599.99",
+                    //"\$599.99",
+                    "\$${product.price}",
                     style: Theme.of(context).textTheme.titleLarge,
                   )
                 ],

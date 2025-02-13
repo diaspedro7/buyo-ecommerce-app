@@ -69,6 +69,7 @@ class ShopAppBar extends StatelessWidget implements PreferredSizeWidget {
                     Expanded(
                       child: SearchTextField(
                         onFieldSubmitted: (value) {
+                          controller.filterProducts(value);
                           Get.to(() => SearchProductsPage());
                         },
                       ),
