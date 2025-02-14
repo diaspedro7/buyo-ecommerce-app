@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable
 
-import 'package:buyo_ecommerce_app/features/shop/controllers/search/search_products_controller.dart';
+import 'package:buyo_ecommerce_app/features/shop/viewmodels/product_viewmodel.dart';
 import 'package:buyo_ecommerce_app/features/shop/screens/search/search_products_page.dart';
 import 'package:buyo_ecommerce_app/common/widgets_products/search_products_textfield.dart';
 import 'package:buyo_ecommerce_app/utils/constants/colors.dart';
@@ -16,7 +16,7 @@ class ShopAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SearchProductsController());
+    final productsVM = ProductsViewModel.instance;
 
     return AppBar(
       backgroundColor: TColors.primary,
@@ -69,7 +69,7 @@ class ShopAppBar extends StatelessWidget implements PreferredSizeWidget {
                     Expanded(
                       child: SearchTextField(
                         onFieldSubmitted: (value) {
-                          controller.filterProducts(value);
+                          productsVM.filterProducts(value);
                           Get.to(() => SearchProductsPage());
                         },
                       ),

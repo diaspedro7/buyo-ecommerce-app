@@ -1,6 +1,7 @@
-import 'package:buyo_ecommerce_app/features/shop/controllers/search/search_products_controller.dart';
 import 'package:buyo_ecommerce_app/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
+
+import '../../features/shop/statecontrollers/search_statecontroller.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({
@@ -12,12 +13,12 @@ class SearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = SearchProductsController.instance;
+    final searchStateController = SearchStateController.instance;
 
     return SizedBox(
       height: 40,
       child: TextFormField(
-        controller: controller.searchController,
+        controller: searchStateController.searchController,
         onFieldSubmitted: onFieldSubmitted,
         cursorColor: TColors.primary,
         decoration: InputDecoration(

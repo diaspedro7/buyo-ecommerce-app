@@ -3,8 +3,8 @@ import 'package:buyo_ecommerce_app/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SearchProductsController extends GetxController {
-  static SearchProductsController get instance => Get.find();
+class ProductsViewModel extends GetxController {
+  static ProductsViewModel get instance => Get.find();
 
   var products = <ProductModel>[
     ProductModel(
@@ -64,6 +64,4 @@ class SearchProductsController extends GetxController {
       update();
     }
   }
-
-  TextEditingController searchController = TextEditingController();
 }
