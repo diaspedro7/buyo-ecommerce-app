@@ -19,7 +19,8 @@ class GridViewProducts extends StatelessWidget {
             crossAxisCount: 2,
             mainAxisSpacing: TSizes.gridViewSpacing,
             crossAxisSpacing: TSizes.gridViewSpacing,
-            mainAxisExtent: 288),
+            mainAxisExtent: 265 //ProductCard.height
+            ),
         itemBuilder: (context, index) => ProductCard(
             product: ProductModel(
                 id: "$index",

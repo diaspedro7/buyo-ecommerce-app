@@ -1,6 +1,8 @@
+import 'package:buyo_ecommerce_app/common/widgets_products/product_page.dart';
 import 'package:buyo_ecommerce_app/features/shop/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:buyo_ecommerce_app/utils/constants/colors.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:buyo_ecommerce_app/utils/constants/sizes.dart';
 
@@ -15,7 +17,9 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.to(() => ProductPage(product: product));
+      },
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(TSizes.sm),
@@ -25,6 +29,7 @@ class ProductCard extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Container(
               width: double.infinity,
@@ -78,6 +83,7 @@ class ProductCard extends StatelessWidget {
             SizedBox(
               height: 60,
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
