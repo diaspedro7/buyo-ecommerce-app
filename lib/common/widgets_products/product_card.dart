@@ -54,7 +54,7 @@ class ProductCard extends StatelessWidget {
                       child: InkWell(
                         onTap: () {},
                         child: const Icon(
-                          Iconsax.heart5,
+                          Iconsax.heart4,
                           color: TColors.error,
                         ),
                       )),
