@@ -18,7 +18,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(() => ProductPage(product: product));
+        Get.to(() => ProductDetailsScreen(product: product));
       },
       child: Container(
         width: 180,

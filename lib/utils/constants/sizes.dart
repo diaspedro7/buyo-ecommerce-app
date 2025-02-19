@@ -4,6 +4,7 @@ class TSizes {
   // Padding and margin sizes
   static const double xs = 4.0;
   static const double sm = 8.0;
+  static const double ten = 10.0;
   static const double md = 16.0;
   static const double lg = 24.0;
   static const double xl = 32.0;
@@ -71,4 +72,9 @@ class TSizes {
 
   // Custom Widgets
   static const double shopAppBarHeight = 200.0;
+
+  //ProductPage
+  static const double heightProductImage = 457.0;
+  static const double heightContainerImageCount = 20.0;
+  static const double widthContainerImageCount = 50.0;
 }

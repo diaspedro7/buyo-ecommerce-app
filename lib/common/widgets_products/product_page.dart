@@ -8,8 +8,8 @@ import 'package:buyo_ecommerce_app/features/shop/models/product_model.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class ProductPage extends StatelessWidget {
-  const ProductPage({super.key, required this.product});
+class ProductDetailsScreen extends StatelessWidget {
+  const ProductDetailsScreen({super.key, required this.product});
   final ProductModel product;
 
   @override
@@ -24,7 +24,7 @@ class ProductPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  height: 457.0,
+                  height: TSizes.heightProductImage,
                   width: double.infinity,
                   padding: EdgeInsets.only(top: TSizes.appBarHeight),
                   color: TColors.light,
@@ -45,8 +45,8 @@ class ProductPage extends StatelessWidget {
                                   padding:
                                       const EdgeInsets.only(bottom: TSizes.md),
                                   child: Container(
-                                    height: 20,
-                                    width: 50,
+                                    height: TSizes.heightContainerImageCount,
+                                    width: TSizes.widthContainerImageCount,
                                     decoration: BoxDecoration(
                                       color: TColors.black.withOpacity(0.7),
                                       borderRadius: BorderRadius.circular(20),
@@ -185,8 +185,8 @@ class ProductPage extends StatelessWidget {
                         color: TColors.black,
                       ),
                       SizedBox(
-                        height: 300,
-                      )
+                          height:
+                              100) //This sizedbox serves to have a little bit more of space in bottom for the elevated button no hide the ui
                     ],
                   ),
                 ),
@@ -198,10 +198,11 @@ class ProductPage extends StatelessWidget {
             left: TSizes.defaultSpace,
             child: GestureDetector(
               onTap: () {
+                controller.dispose();
                 Get.back();
               },
               child: Container(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(TSizes.ten),
                 decoration:
                     BoxDecoration(color: TColors.white, shape: BoxShape.circle),
                 child: Icon(
@@ -218,7 +219,7 @@ class ProductPage extends StatelessWidget {
             child: GestureDetector(
               onTap: () {},
               child: Container(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(TSizes.ten),
                 decoration:
                     BoxDecoration(color: TColors.white, shape: BoxShape.circle),
                 child: Icon(
@@ -232,16 +233,17 @@ class ProductPage extends StatelessWidget {
           Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: TSizes.sm),
+                padding: const EdgeInsets.only(
+                  left: TSizes.sm,
+                  right: TSizes.sm,
+                  bottom: TSizes.sm,
+                ),
                 child: SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {},
                     style:
                         Theme.of(context).elevatedButtonTheme.style!.copyWith(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(TColors.primary),
-                              side: MaterialStatePropertyAll(BorderSide.none),
                               shape: MaterialStatePropertyAll(
                                   RoundedRectangleBorder(
                                       borderRadius:

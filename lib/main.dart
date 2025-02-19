@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
+  //TODO: Dispose of controllers
   Get.lazyPut(() => OnBoardingController());
   Get.lazyPut(() => ProductsViewModel());
   Get.lazyPut(() => SearchStateController());
