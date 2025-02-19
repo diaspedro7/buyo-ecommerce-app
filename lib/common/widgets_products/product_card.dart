@@ -44,7 +44,7 @@ class ProductCard extends StatelessWidget {
                   Align(
                     alignment: Alignment.center,
                     child: Image(
-                      image: AssetImage(product.image),
+                      image: AssetImage(product.image[0]),
                       fit: BoxFit.contain,
                       height: 150,
                     ),

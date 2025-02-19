@@ -4,7 +4,7 @@ class ProductModel {
   final double price;
   final int discount;
   final String description;
-  final String image;
+  final List<String> image;
 
   ProductModel(
       {required this.id,

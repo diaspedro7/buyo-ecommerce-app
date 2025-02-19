@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:buyo_ecommerce_app/features/shop/statecontrollers/product_page_statecontroller.dart';
 import 'package:buyo_ecommerce_app/utils/constants/colors.dart';
 import 'package:buyo_ecommerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,8 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductPageStateController());
+
     return Scaffold(
       body: Stack(
         children: [
@@ -26,13 +29,14 @@ class ProductPage extends StatelessWidget {
                   padding: EdgeInsets.only(top: TSizes.appBarHeight),
                   color: TColors.light,
                   child: PageView.builder(
+                      itemCount: product.image.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Stack(
                           children: [
                             Center(
                                 child: Image.asset(
-                              product.image,
+                              product.image[0],
                               fit: BoxFit.contain,
                             )),
                             Align(
@@ -49,7 +53,7 @@ class ProductPage extends StatelessWidget {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        "$index / 10",
+                                        "${index + 1} / ${product.image.length}",
                                         style: Theme.of(context)
                                             .textTheme
                                             .labelMedium!
@@ -128,6 +132,61 @@ class ProductPage extends StatelessWidget {
                         maxLines: 3,
                         textAlign: TextAlign.left,
                       ),
+                      SizedBox(height: TSizes.spaceBtwItems),
+                      Divider(
+                        height: TSizes.dividerHeight,
+                        color: TColors.black,
+                      ),
+                      SizedBox(height: TSizes.spaceBtwItems),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Obx(
+                              () => Text(
+                                product.description,
+                                style: Theme.of(context).textTheme.labelMedium,
+                                overflow: TextOverflow.fade,
+                                maxLines: controller.descriptionIsExpanded.value
+                                    ? null
+                                    : 3,
+                                textAlign: TextAlign.left,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: TSizes.xs),
+                      GestureDetector(
+                        onTap: () {
+                          controller.descriptionIsExpanded.value =
+                              !controller.descriptionIsExpanded.value;
+                        },
+                        child: Column(
+                          children: [
+                            Obx(
+                              () => Text(
+                                controller.descriptionIsExpanded.value
+                                    ? "Read less"
+                                    : "Read more",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelMedium!
+                                    .apply(color: TColors.black),
+                              ),
+                            ),
+                            Icon(Icons.arrow_drop_down, color: TColors.black),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: TSizes.xs),
+                      Divider(
+                        height: TSizes.dividerHeight,
+                        color: TColors.black,
+                      ),
+                      SizedBox(
+                        height: 300,
+                      )
                     ],
                   ),
                 ),
@@ -181,7 +240,7 @@ class ProductPage extends StatelessWidget {
                     style:
                         Theme.of(context).elevatedButtonTheme.style!.copyWith(
                               backgroundColor:
-                                  MaterialStatePropertyAll(TColors.black),
+                                  MaterialStatePropertyAll(TColors.primary),
                               side: MaterialStatePropertyAll(BorderSide.none),
                               shape: MaterialStatePropertyAll(
                                   RoundedRectangleBorder(
