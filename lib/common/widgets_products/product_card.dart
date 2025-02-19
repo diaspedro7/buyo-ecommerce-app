@@ -1,5 +1,6 @@
 import 'package:buyo_ecommerce_app/common/widgets_products/product_page.dart';
 import 'package:buyo_ecommerce_app/features/shop/models/product_model.dart';
+import 'package:buyo_ecommerce_app/features/shop/models/shop_model.dart';
 import 'package:flutter/material.dart';
 import 'package:buyo_ecommerce_app/utils/constants/colors.dart';
 import 'package:get/get.dart';
@@ -10,15 +11,20 @@ class ProductCard extends StatelessWidget {
   const ProductCard({
     super.key,
     required this.product,
+    required this.shop,
   });
 
   final ProductModel product;
+  final ShopModel shop;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(() => ProductDetailsScreen(product: product));
+        Get.to(() => ProductDetailsScreen(
+              product: product,
+              shop: shop,
+            ));
       },
       child: Container(
         width: 180,

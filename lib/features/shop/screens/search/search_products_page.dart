@@ -3,6 +3,7 @@
 import 'package:buyo_ecommerce_app/common/widgets_products/product_card.dart';
 import 'package:buyo_ecommerce_app/common/widgets_products/search_products_textfield.dart';
 import 'package:buyo_ecommerce_app/features/shop/viewmodels/product_viewmodel.dart';
+import 'package:buyo_ecommerce_app/features/shop/viewmodels/shop_viewmodel.dart';
 import 'package:buyo_ecommerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:buyo_ecommerce_app/utils/constants/colors.dart';
@@ -14,6 +15,7 @@ class SearchProductsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productsVM = ProductsViewModel.instance;
+    final shopVM = ShopViewModel.instance;
     //final controller = ProductsViewModel.instance;
 
     return Scaffold(
@@ -26,21 +28,27 @@ class SearchProductsPage extends StatelessWidget {
             },
           ),
         ),
-        body: SingleChildScrollView(
-          child: Expanded(
-            child: Obx(() => GridView.builder(
-                itemCount: productsVM.searchResults.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: TSizes.gridViewSpacing,
-                    crossAxisSpacing: TSizes.gridViewSpacing,
-                    mainAxisExtent: 288),
-                itemBuilder: (context, index) {
-                  final product = productsVM.searchResults[index];
-                  return ProductCard(product: product);
-                })),
+        body: Padding(
+          padding: const EdgeInsets.all(TSizes.lg),
+          child: SingleChildScrollView(
+            child: Expanded(
+              child: Obx(() => GridView.builder(
+                  itemCount: productsVM.searchResults.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: TSizes.gridViewSpacing,
+                      crossAxisSpacing: TSizes.gridViewSpacing,
+                      mainAxisExtent: 265),
+                  itemBuilder: (context, index) {
+                    final product = productsVM.searchResults[index];
+                    return ProductCard(
+                      product: product,
+                      shop: shopVM.getShopBasedOnShopId(product.shopId),
+                    );
+                  })),
+            ),
           ),
         ));
   }

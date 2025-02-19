@@ -77,4 +77,8 @@ class TSizes {
   static const double heightProductImage = 457.0;
   static const double heightContainerImageCount = 20.0;
   static const double widthContainerImageCount = 50.0;
+  static const double shopContainerTitleWidth = 220.0;
+  static const double shopContainerWidgetHeight = 80.0;
+  static const double shopContainerImage = 70.0;
+  static const double additionalSpaceForButton = 100.0;
 }

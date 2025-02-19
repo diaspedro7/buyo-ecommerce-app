@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:buyo_ecommerce_app/features/shop/models/shop_model.dart';
 import 'package:buyo_ecommerce_app/features/shop/statecontrollers/product_page_statecontroller.dart';
 import 'package:buyo_ecommerce_app/utils/constants/colors.dart';
 import 'package:buyo_ecommerce_app/utils/constants/sizes.dart';
@@ -9,8 +10,10 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key, required this.product});
+  const ProductDetailsScreen(
+      {super.key, required this.product, required this.shop});
   final ProductModel product;
+  final ShopModel shop;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +39,7 @@ class ProductDetailsScreen extends StatelessWidget {
                           children: [
                             Center(
                                 child: Image.asset(
-                              product.image[0],
+                              product.image[index],
                               fit: BoxFit.contain,
                             )),
                             Align(
@@ -77,6 +80,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          //TODO: Add the price without discount
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -122,15 +126,22 @@ class ProductDetailsScreen extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: TSizes.spaceBtwItems),
-                      Text(
-                        product.title,
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge!
-                            .apply(fontWeightDelta: 1),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 3,
-                        textAlign: TextAlign.left,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              product.title,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge!
+                                  .apply(fontWeightDelta: 1),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 3,
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(height: TSizes.spaceBtwItems),
                       Divider(
@@ -184,9 +195,62 @@ class ProductDetailsScreen extends StatelessWidget {
                         height: TSizes.dividerHeight,
                         color: TColors.black,
                       ),
+                      SizedBox(height: TSizes.spaceBtwItems),
+                      Container(
+                        height: TSizes.shopContainerWidgetHeight,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: TColors.white,
+                          borderRadius: BorderRadius.circular(TSizes.sm),
+                          border: Border.all(color: TColors.grey, width: 3),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(TSizes.sm),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    height: TSizes.shopContainerImage,
+                                    width: TSizes.shopContainerImage,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                          image: AssetImage(shop.shopImage),
+                                          fit: BoxFit.cover),
+                                    ),
+                                  ),
+                                  SizedBox(width: TSizes.spaceBtwItems),
+                                  SizedBox(
+                                    width: TSizes.shopContainerTitleWidth,
+                                    child: Text(
+                                      shop.shopName,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  //TODO: Implements go to shop
+                                },
+                                child: Icon(
+                                  Iconsax.arrow_right_2,
+                                  color: TColors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                       SizedBox(
-                          height:
-                              100) //This sizedbox serves to have a little bit more of space in bottom for the elevated button no hide the ui
+                          height: TSizes
+                              .additionalSpaceForButton) //This sizedbox serves to have a little bit more of space in bottom for the elevated button no hide the ui
                     ],
                   ),
                 ),
@@ -207,7 +271,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     BoxDecoration(color: TColors.white, shape: BoxShape.circle),
                 child: Icon(
                   Icons.arrow_back,
-                  size: 30,
+                  size: TSizes.iconLg,
                   color: TColors.black,
                 ),
               ),
@@ -224,7 +288,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     BoxDecoration(color: TColors.white, shape: BoxShape.circle),
                 child: Icon(
                   Iconsax.heart4,
-                  size: 30,
+                  size: TSizes.iconLg,
                   color: TColors.black,
                 ),
               ),
