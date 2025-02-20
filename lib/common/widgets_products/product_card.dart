@@ -1,4 +1,4 @@
-import 'package:buyo_ecommerce_app/common/widgets_products/product_page.dart';
+import 'package:buyo_ecommerce_app/common/widgets_products/product_details_screen.dart';
 import 'package:buyo_ecommerce_app/features/shop/models/product_model.dart';
 import 'package:buyo_ecommerce_app/features/shop/models/shop_model.dart';
 import 'package:flutter/material.dart';

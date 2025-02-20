@@ -77,54 +77,66 @@ class ProductDetailsScreen extends StatelessWidget {
                       horizontal: TSizes.defaultSpace),
                   child: Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          //TODO: Add the price without discount
-                          Row(
+                      SizedBox(
+                        width: double.infinity,
+                        child: Flexible(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text("\$${product.price}",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium),
+                              Flexible(
+                                child: Text("\$${product.price}",
+                                    overflow: TextOverflow.ellipsis,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineMedium),
+                              ),
                               SizedBox(width: TSizes.md),
                               product.discount == 0
                                   ? const SizedBox()
-                                  : Container(
-                                      padding: const EdgeInsets.all(TSizes.sm),
-                                      decoration: BoxDecoration(
-                                          color: TColors.secondary,
-                                          borderRadius:
-                                              BorderRadius.circular(TSizes.sm)),
-                                      child: Text(
-                                        "${product.discount}%",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .labelLarge!
-                                            .apply(color: TColors.black),
+                                  : Flexible(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Flexible(
+                                            child: Text(
+                                              "\$${product.price + (product.price * product.discount / 100).floorToDouble()}",
+                                              overflow: TextOverflow.clip,
+                                              maxLines: 1,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headlineSmall!
+                                                  .apply(
+                                                      decoration: TextDecoration
+                                                          .lineThrough,
+                                                      color: TColors.darkGrey),
+                                            ),
+                                          ),
+                                          SizedBox(width: TSizes.xs),
+                                          Container(
+                                            padding:
+                                                const EdgeInsets.all(TSizes.xs),
+                                            decoration: BoxDecoration(
+                                                color: TColors.secondary,
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        TSizes.sm)),
+                                            child: Text(
+                                              "${product.discount}%",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge!
+                                                  .apply(color: TColors.black),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                             ],
                           ),
-                          Row(
-                            children: [
-                              Icon(Icons.star, color: TColors.secondary),
-                              Text(
-                                "5.0 ",
-                                style: Theme.of(context).textTheme.titleLarge,
-                              ),
-                              Text(
-                                "(46)",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge!
-                                    .apply(color: TColors.darkGrey),
-                              )
-                            ],
-                          )
-                        ],
+                        ),
                       ),
+
                       SizedBox(height: TSizes.spaceBtwItems),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -143,6 +155,25 @@ class ProductDetailsScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                      SizedBox(height: TSizes.spaceBtwItems),
+
+                      Row(
+                        children: [
+                          Icon(Icons.star, color: TColors.secondary),
+                          Text(
+                            "5.0 ",
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                          Text(
+                            "(46)",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .apply(color: TColors.darkGrey),
+                          )
+                        ],
+                      ),
+
                       SizedBox(height: TSizes.spaceBtwItems),
                       Divider(
                         height: TSizes.dividerHeight,
